@@ -21,9 +21,10 @@ $.fn.reorderable = function(opts) {
     var $row    = ui.item,
         $rows   = $row.parent().children('tr'),
         $table  = $row.closest('table'),
+        offset  = $table.data('offset') || 0
         $handle = $row.find('.reorder-handle'),
         url     = $handle.data('reorder-url'),
-        index   = function(i) { return $rows.index(i) + 1; };
+        index   = function(i) { return $rows.index(i) + 1 + offset; };
 
     $table.find('tbody tr').each(function(index) {
       var $row     = $(this),
